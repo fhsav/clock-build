@@ -9,3 +9,21 @@ You'll need [Vagrant](http://vagrantup.com) and the [Vagrant AWS Provider](https
 ```
 $ vagrant plugin install vagrant-aws
 ```
+
+## Development
+
+Just run the default Vagrant provider.
+
+```
+$ vagrant up
+```
+
+## Production
+
+_Put instructions about keys and stuff here..._
+
+Use the `aws` Vagrant provider.
+
+```
+$ vagrant up --provider=aws
+```
