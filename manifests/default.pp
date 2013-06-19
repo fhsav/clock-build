@@ -5,7 +5,6 @@ Exec {
   path => ['/usr/sbin', '/usr/bin', '/sbin', '/bin']
 }
 
-
 ###
 # Pre-install Stage
 ###
@@ -21,6 +20,23 @@ class apt_get_update {
 }
 
 class { 'apt_get_update':
+  stage => preinstall
+}
+
+class create_user {
+  user { 'ubuntu':
+    ensure   => 'present',
+    home     => '/home/ubuntu',
+    password => '$6$6ZYmUT4g4$50bAkyjiHX7x/kah3dJwj3Jc8/7APLrlz695lNYArc9F5XTC2gZ6FY/r0nIEe7ega2/zIQMUaRwyBc4IcQq96/',
+    shell    => '/bin/bash',
+  }
+
+  file { '/home/ubuntu':
+    ensure => 'directory'
+  }
+}
+
+class { 'create_user':
   stage => preinstall
 }
 
@@ -47,18 +63,9 @@ package { ['mongodb', 'redis-server', 'memcached', 'nodejs']:
 # Ruby
 ###
 
-rbenv::install { 'ubuntu':
-  group => 'ubuntu',
-  home  => '/home/ubuntu'
-}
-
-rbenv::plugin { 'rbenv-sudo':
-  user   => 'ubuntu',
-  source => 'https://github.com/dcarley/rbenv-sudo.git'
-}
-
-rbenv::compile { '2.0.0-p0':
-  user   => 'ubuntu',
-  home   => '/home/ubuntu',
-  global => true
-}
+# git clone rbenv
+# add to ~/.profile
+# git clone ruby-build
+# git clone rbenv-sudo
+# rbenv install 2.0.0-p0
+# gem install bundler passenger

@@ -1,6 +1,6 @@
 # clock-build
 
-This repository includes both a virtual machine (VM) and build script for launching a new instance of the clock. _Development in progress._
+This repository includes both a virtual machine (VM) and build script for launching a new instance of the Clock. _Development in progress._
 
 ## Instructions
 
@@ -17,6 +17,14 @@ Just run the default Vagrant provider.
 ```
 $ vagrant up
 ```
+
+Once this is done (it'll take a while), you'll have the Clock running locally at [http://localhost:3000](http://localhost:3000). You can log in and poke around:
+
+```
+$ vagrant ssh
+```
+
+Any changes you make to the `clock/` directory on the host system will be reflected in the VM.
 
 ## Production
 
